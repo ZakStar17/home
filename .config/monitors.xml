@@ -1,9 +1,28 @@
 <monitors version="2">
   <configuration>
     <logicalmonitor>
+      <x>0</x>
+      <y>0</y>
+      <scale>1</scale>
+      <monitor>
+        <monitorspec>
+          <connector>HDMI-1</connector>
+          <vendor>AOC</vendor>
+          <product>27G2G4</product>
+          <serial>PMGM6HA048494</serial>
+        </monitorspec>
+        <mode>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>60</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+    <logicalmonitor>
       <x>1920</x>
       <y>0</y>
       <scale>1</scale>
+      <primary>yes</primary>
       <monitor>
         <monitorspec>
           <connector>HDMI-0</connector>
@@ -18,11 +37,31 @@
         </mode>
       </monitor>
     </logicalmonitor>
+  </configuration>
+  <configuration>
+    <logicalmonitor>
+      <x>1920</x>
+      <y>0</y>
+      <scale>1</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>HDMI-0</connector>
+          <vendor>AOC</vendor>
+          <product>2481W</product>
+          <serial>ANSK59A005808</serial>
+        </monitorspec>
+        <mode>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>60</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
     <logicalmonitor>
       <x>0</x>
       <y>0</y>
       <scale>1</scale>
-      <primary>yes</primary>
       <monitor>
         <monitorspec>
           <connector>HDMI-1</connector>
@@ -33,7 +72,7 @@
         <mode>
           <width>1920</width>
           <height>1080</height>
-          <rate>143.99983215332031</rate>
+          <rate>60</rate>
         </mode>
       </monitor>
     </logicalmonitor>

@@ -1,35 +1,7 @@
-/aur
-/captures
-/Desktop
-/Documents
-/Downloads
-/Music
-/Pictures
-/Public
-/repos
-/Templates
-/Videos
-/.cache
-/.cargo
-./gnome
-# /.icons
-/.local
-/.npm
-/.nv
-/.pki
-/.psensor
-/.rustup
-/.steam
+/*
 
-.bash_history
-.pulse-cookie
-.steampath
-.steampid
-
-# .config
-/.config/google-chrome
-/.config/discord
-/.config/WebCord
-/.config/pulse
-/.config/StardewValley/Saves
-
+!.allacritty.yml
+!.bash_profile
+!.bashrc
+!.profile
+!.gitignore
