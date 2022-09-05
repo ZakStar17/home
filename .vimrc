@@ -31,3 +31,7 @@ inoremap [ []<left>
 inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
+
+""nnoremap <j> <k>
+""nnoremap <k> <j>
+
