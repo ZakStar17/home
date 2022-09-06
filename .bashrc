@@ -38,3 +38,7 @@ fortune
 
 # -----
 source /usr/share/nvm/init-nvm.sh
+
+export PATH=~/.cargo/bin:$PATH
+export RUSTC_WRAPPER=sccache
+alias gcc="sccache gcc"

@@ -3,7 +3,6 @@ echo "Starting in $INIC"
 
 # Home configuration
 cd ~
-echo "$(pwd)"
 cp -i .alacritty.yml .bashrc .gitconfig .vimrc .xinitrc $INIC
 
 # .config
