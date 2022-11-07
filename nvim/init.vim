@@ -165,7 +165,9 @@ set updatetime=300  " updatetime 300ms
 set signcolumn=yes  " always show signcolumn
 set nohlsearch
 colorscheme pablo
-
+:set tabstop=4
+:set shiftwidth=4
+:set expandtab
 
 " remaps
 nnoremap <C-i> i_<Esc>r
@@ -173,6 +175,6 @@ nnoremap <C-i> i_<Esc>r
 " inoremap ' ''<left>
 " inoremap ( ()<left>
 " inoremap [ []<left>
-" inoremap { {}<left>
+inoremap { {}<left>
 "    inoremap {<CR> {<CR>}<ESC>O
 " inoremap {;<CR> {<CR>};<ESC>O
