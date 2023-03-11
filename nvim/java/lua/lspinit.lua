@@ -1,13 +1,15 @@
-local use = require('packer').use
-require('packer').startup(function()
-  use 'wbthomason/packer.nvim' -- Package manager
-  use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
-  use {'neoclide/coc.nvim', branch = 'release'} -- completion
-  use 'dense-analysis/ale'
-  use 'mfussenegger/nvim-jdtls' -- java jdtls
-end)
+local rt = require("rust-tools")
+rt.setup({
+  server = {
+    on_attach = function(_, bufnr)
+      -- Hover actions
+      vim.keymap.set("n", "<C-x>", rt.hover_actions.hover_actions, { buffer = bufnr })
+      -- Code action groups
+      vim.keymap.set("n", "<C-s>", rt.code_action_group.code_action_group, { buffer = bufnr })
+    end,
+  },
+})
 
-require'lspconfig'.rust_analyzer.setup{}
 require'lspconfig'.sumneko_lua.setup {
   settings = {
     Lua = {

@@ -5,6 +5,10 @@ HISTFILESIZE=2000
 # PS1='\u[\#]:\w$ '
 PS1='\[\e[32m\]\u[\#]\[\e[00m\]:\[\e[36m\]\w\[\e[00m\]$ '
 
+# neovim
+alias vim=nvim
+export EDITOR=nvim
+
 alias termx="export TERM='xterm'"
 alias termnormal="export TERM='term-256color'"
 alias termnone="unset TERM"
@@ -33,7 +37,13 @@ alias wisdomcow="fortune | cowsay"
 alias raindbowmatrix="cmatrix | lolcat; clear"
 alias please="sudo"
 
-neofetch
+alias tt="alacritty &"
+alias settouchpad="xinput set-prop 11 272 1"
+
+export PATH=$PATH:$HOME/.local/bin
+export XDG_CONFIG_HOME=$HOME/.config
+
+# neofetch
 fortune
 
 # -----
@@ -42,3 +52,4 @@ source /usr/share/nvm/init-nvm.sh
 export PATH=~/.cargo/bin:$PATH
 export RUSTC_WRAPPER=sccache
 alias gcc="sccache gcc"
+alias g++="sccache g++"

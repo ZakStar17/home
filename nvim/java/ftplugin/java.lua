@@ -1,8 +1,3 @@
-local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
-
-local workspace_dir = '/home/zakstar17/java/workspace_dir/' .. project_name
-
-
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
   -- The command that starts the language server
@@ -10,7 +5,7 @@ local config = {
   cmd = {
 
     -- 💀
-    'java', -- or '/path/to/java17_or_newer/bin/java'
+    '/sbin/java', -- or '/sbin/java'
             -- depends on if `java` is in your $PATH env variable and if it points to the right version.
 
     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
@@ -24,14 +19,14 @@ local config = {
     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
 
     -- 💀
-    '-jar', '/home/zakstar17/.local/opt/jdtls-launcher/jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
+    '-jar', '/usr/share/java/jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
          -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
          -- Must point to the                                                     Change this to
          -- eclipse.jdt.ls installation                                           the actual version
 
 
     -- 💀
-    '-configuration', '/home/zakstar17/.local/opt/jdtls-launcher/jdtls/config_linux',
+    '-configuration', 'usr/share/java/jdtls/config_linux',
                     -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        ^^^^^^
                     -- Must point to the                      Change to one of `linux`, `win` or `mac`
                     -- eclipse.jdt.ls installation            Depending on your system.
@@ -39,7 +34,7 @@ local config = {
 
     -- 💀
     -- See `data directory configuration` section in the README
-    '-data', workspace_dir, 
+    -- '-data', '/path/to/unique/per/project/workspace/folder'
   },
 
   -- 💀
