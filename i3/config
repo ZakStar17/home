@@ -6,7 +6,8 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+#font pango:monospace 8
+font pango:Source Code Pro 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -29,7 +30,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 
 # -------------------------
-# System independed options
+# System independent options
 # -------------------------
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -41,14 +42,7 @@ bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-# bindsym $mod+d exec --no-startup-id dmenu_run
-# A more modern dmenu replacement is rofi:
-# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
-# There also is i3-dmenu-desktop which only displays applications shipping a
-# .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindsym $mod+x exec --no-startup-id i3-dmenu-desktop
-# exec --no-startup-id ulauncher --no-window
+# terminal / desktop app opener
 bindsym $mod+x exec --no-startup-id fuzzel
 
 # change focus
@@ -217,11 +211,13 @@ bindsym $mod+XF86AudioMicMute exec --no-startup-id $mute_mic
 
 
 # --------------------
-# Input
+# Input (System dependent)
 # --------------------
 
 input "2:14:ETPS/2_Elantech_Touchpad" {
   tap enabled
+  accel_profile "flat" # "flat" to disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
+  pointer_accel 0.7 # set mouse sensitivity (between -1 and 1)
 }
 
 input "1:1:AT_Translated_Set_2_keyboard" {
@@ -234,18 +230,13 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 bindsym XF86MonBrightnessDown exec sudo xbacklight -dec 5
 bindsym XF86MonBrightnessUp exec sudo xbacklight -inc 5
 
-# recursively finds and sets a random wallpaper from ~/wallpapers
-set $brset swaymsg output eDP-1 bg $(find ~/wallpapers -type f | shuf -n 1) fill #111111
-exec --no-startup-id $brset
-bindsym $mod+Shift+b exec $brset
+# recursively finds and sets a random wallpaper from ~/wallpapers using a script
+exec --no-startup-id sh ~/scripts/change_background.sh
+bindsym $mod+Shift+b exec --no-startup-id sh ~/scripts/change_background.sh
 
 # Screenshot (flameshot)
 bindsym Shift+Print exec flameshot screen --path ~/captures --clipboard
 bindsym Print exec flameshot gui
-
-# Desktop background
-# bindsym $mod+Shift+b exec feh --bg-fill --randomize /home/zakstar17/wallpapers/*
-# exec --no-startup-id feh --bg-fill --randomize /home/zakstar17/wallpapers/*
 
 # Screen lock
 # exec --no-startup-id exec xss-lock -l ~/scripts/transfer-sleep-lock-i3lock.sh
