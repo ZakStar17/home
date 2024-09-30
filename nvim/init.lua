@@ -1,29 +1,25 @@
--- initial configuration was taken from https://mattermost.com/blog/how-to-install-and-set-up-neovim-for-code-editing/
+-- require('plug')
 
-vim.g.mapleader = ","
-vim.g.localleader = "\\"
+vim.opt.termguicolors = true
 
--- improve loading time
-require('impatient')
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
--- default
-require('vars')      -- Variables
-require('opts')      -- Options
-require('keys')      -- Keymaps
-require('plug')      -- Plugins
-require('daprust')
+require("lazy").setup("plugins", {
+  checker = {enabled = false},
+  change_detection = {enabled = false},
+})
 
--- plugins
-require('nvim-tree').setup{}
-require('lualine').setup()
-require('lspinit')
-require('coc')
-require('treesitterinit')
-require('colorizer').setup()
-require('numbers').setup()
-require("dapui").setup()
-
--- other
--- require('java')
-
-
+require("opts")
+require("lsp_config")
+require("nvim-cmp")

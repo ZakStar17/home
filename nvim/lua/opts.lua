@@ -1,6 +1,10 @@
 local opt = vim.opt
 local cmd = vim.api.nvim_command
 
+-- cmd(':set backup')
+
+-- I just copied these from somewhere I don't even remember lol
+
 -- [[ Context ]]
 opt.number = true                -- bool: Show line numbers
 opt.relativenumber = true        -- bool: Show relative line numbers
@@ -11,12 +15,11 @@ opt.signcolumn = "yes"           -- str:  Show the sign column
 opt.encoding = 'utf8'            -- str:  String encoding to use
 opt.fileencoding = 'utf8'        -- str:  File encoding to use
 
+-- [[ Language ]]
+cmd(":setlocal spell spelllang=en_us")
+
 -- [[ Theme ]]
 opt.syntax = "ON"                -- str:  Allow syntax highlighting
-opt.termguicolors = true         -- bool: If term supports ui color then enable
-
--- cmd('colorscheme boo')
-
 cmd('colorscheme tokyonight-night')
 
 -- [[ Search ]]
@@ -38,18 +41,3 @@ opt.splitbelow = true            -- bool: Place new window below the current one
 vim.api.nvim_set_option('updatetime', 100)
 opt.signcolumn = "yes"
 
--- rust
-cmd('let g:rust_recommended_style = v:false')
-
--- Fixed column for diagnostics to appear
--- Show autodiagnostic popup on cursor hover_range
--- Goto previous / next diagnostic warning / error 
--- Show inlay_hints more frequently 
--- vim.cmd([[
--- set signcolumn=yes
--- autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
--- ]])
-
--- Treesitter folding 
--- vim.wo.foldmethod = 'expr'
--- vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
