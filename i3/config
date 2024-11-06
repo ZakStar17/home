@@ -189,7 +189,7 @@ bar {
 # --------------------
 
 # Use pactl to adjust volume in PulseAudio.
-# todo: fix super + raise/lower volume now working
+# todo: fix super + raise/lower volume not working
 set $refresh_i3status killall -SIGUSR1 i3status
 set $volp pactl set-sink-volume @DEFAULT_SINK@ +1% && $refresh_i3status
 set $volm pactl set-sink-volume @DEFAULT_SINK@ -1% && $refresh_i3status
@@ -209,6 +209,9 @@ bindsym $mod+XF86AudioMute exec --no-startup-id $mute_volume
 bindsym XF86AudioMicMute exec --no-startup-id $mute_mic
 bindsym $mod+XF86AudioMicMute exec --no-startup-id $mute_mic
 
+# import wayland variables
+exec systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
+exec dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
 
 # --------------------
 # Input (System dependent)
@@ -234,9 +237,10 @@ bindsym XF86MonBrightnessUp exec sudo xbacklight -inc 5
 exec --no-startup-id sh ~/scripts/change_background.sh
 bindsym $mod+Shift+b exec --no-startup-id sh ~/scripts/change_background.sh
 
-# Screenshot (flameshot)
-bindsym Shift+Print exec flameshot screen --path ~/captures --clipboard
-bindsym Print exec flameshot gui
+# Screenshot
+bindsym Print exec grim -g "$(slurp)" - | wl-copy
+bindsym Shift+Print exec grim $(xdg-user-dir)/captures/$(date "+%Y-%m-%d_%H-%M-%S").png
+bindsym Ctrl+Print exec grim -g "$(slurp)" - | swappy -f -
 
 # Screen lock
 # exec --no-startup-id exec xss-lock -l ~/scripts/transfer-sleep-lock-i3lock.sh
@@ -281,3 +285,5 @@ bindsym $mod+Tab exec enhanced workspace tab
 bindsym Super_L exec enhanced super
 bindsym $mod+Ctrl+Right exec enhanced workspace next
 bindsym $mod+Ctrl+Left exec enhanced workspace previous
+bindsym $mod+Ctrl+l exec enhanced workspace next
+bindsym $mod+Ctrl+h exec enhanced workspace previous
